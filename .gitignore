@@ -1,0 +1,7 @@
+_build*/
+build*/
+cmake-build-*/
+.idea/
+.vs/
+
+HunterGate.cmake
