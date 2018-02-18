@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-    dynalo::library lib(std::string(argv[1]) + "/" + dynalo::to_native_name("some"));
+    dynalo::library lib(std::string(argv[1]) + "/" + dynalo::to_native_name("awesome"));
 
     auto add_integers  = lib.get_function<int32_t(const int32_t, const int32_t)>("add_integers");
     auto print_message = lib.get_function<void(const char*)>("print_message");
