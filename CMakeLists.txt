@@ -30,7 +30,7 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets)
 include (CMakePackageConfigHelpers)
 write_basic_package_version_file (
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION 0.9.0
+    VERSION 1.0.0
     COMPATIBILITY AnyNewerVersion
 )
 export(

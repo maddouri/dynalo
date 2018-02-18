@@ -7,3 +7,8 @@
 #else
     #error "dynalo/detail/config.hpp OS Not Supported"
 #endif
+
+#define DYNALO_VERSION_MAJOR 1
+#define DYNALO_VERSION_MINOR 0
+#define DYNALO_VERSION_PATCH 0
+#define DYNALO_VERSION       0x010000  /**< major minor patch*/
