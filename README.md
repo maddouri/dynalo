@@ -2,8 +2,8 @@
 
 dynalo is a header-only library that provides a cross platform API for:
 
-* Loading/unloading a shared library (`.so` in Linux and `.dll` in Windows)
-* Getting a pointer to an exported function in the loaded shared library
+* Loading and unloading a shared library (`.so` in Linux and `.dll` in Windows)
+* Getting a pointer to exported functions in the loaded shared library
 
 ## API Summary
 
@@ -21,7 +21,7 @@ Everything is inside the `dynalo` namespace which is defined in the `dynalo/dyna
     void close(native::handle lib_handle);
     ```
 
-* Look up a function in the shared library and return pointer to it
+* Look up a function in the shared library and return a pointer to it
 
     ```cpp
     template <typename FunctionSignature>
@@ -46,7 +46,7 @@ Everything is inside the `dynalo` namespace which is defined in the `dynalo/dyna
     };
     ```
 
-* Generate a valid shared library file:
+* Generate a valid shared library file name
     * On Linux: Convert `awesome` to `libawesome.so`
     * On Windows: Convert `awesome` to `awesome.dll`
 
@@ -57,7 +57,7 @@ Everything is inside the `dynalo` namespace which is defined in the `dynalo/dyna
 ## Example
 
 This is a simple example of a shared library that exports some functions
-and a program the dynamically load the library then calls its exported functions.
+and a program that dynamically loads the library then calls its exported functions.
 
 See the [`test`](test) folder for details on how to compile.
 
@@ -143,4 +143,4 @@ cmake --build . [--config (Debug|Release|...)] --target install
 
 ### Manual Installation
 
-dynalo is a header-only library. You can simply copy the content of the [`include`](include) folder into your project. (just remember to link with the proper libs as mentioned in "Dependencies")
+dynalo is a header-only library. Therefore, you can simply copy the content of the [`include`](include) folder into your project. (just remember to link with the proper libs as mentioned in "Dependencies")
