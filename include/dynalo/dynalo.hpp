@@ -6,6 +6,8 @@
     #include "detail/linux/dynalo.hpp"
 #elif defined(DYNALO_HAS_WINDOWS)
     #include "detail/windows/dynalo.hpp"
+#elif defined(DYNALO_HAS_MACOS)
+    #include "detail/macos/dynalo.hpp"
 #endif
 
 /// DYNAmic LOading of shared libraries and access to their exported functions
