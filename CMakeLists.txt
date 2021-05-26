@@ -73,7 +73,7 @@ install(
     DESTINATION "${CONFIG_PACKAGE_INSTALL_LOCATION}"
 )
 
-get_directory_property(IS_EXCLUDED ${CMAKE_CURRENT_SOURCE_DIR} EXCLUDE_FROM_ALL)
+get_directory_property(IS_EXCLUDED EXCLUDE_FROM_ALL)
 
 if (NOT IS_EXCLUDED AND BUILD_TESTS)
     message(STATUS "Building tests for ${PROJECT_NAME}")
