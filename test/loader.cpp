@@ -4,7 +4,7 @@
 #include <sstream>
 
 // usage: loader "path/to/shared/lib/dir"
-int main(int argc, char* argv[])
+int main(int /*argc*/, char* argv[])
 {
     dynalo::library lib(std::string(argv[1]) + "/" + dynalo::to_native_name("shared"));
 
