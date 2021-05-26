@@ -6,6 +6,21 @@ project(dynalo)
 #set(CMAKE_CXX_STANDARD_REQUIRED ON )
 #set(CMAKE_CXX_EXTENSIONS        OFF)
 
+option(CLEAN_BUILD "Clean build with no warnings allowed" OFF)
+message(STATUS "Clean build, warnings are not allowed: " ${CLEAN_BUILD})
+option(BUILD_TESTS "Build tests for ${PROJECT_NAME}: " ON)
+
+if (${CLEAN_BUILD})
+    if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        add_compile_options(/W4 /WX)
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        add_compile_options(-Wall -Wextra -pedantic -Werror)
+    else()
+        # TODO: implement flags for other compilers
+        message(STATUS "CLEAN_BUILD is not supported for ${CMAKE_CXX_COMPILER_ID}")
+    endif()
+endif()
+
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(${PROJECT_NAME} INTERFACE
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
@@ -58,4 +73,10 @@ install(
     DESTINATION "${CONFIG_PACKAGE_INSTALL_LOCATION}"
 )
 
-add_subdirectory(test)
+get_directory_property(IS_EXCLUDED EXCLUDE_FROM_ALL)
+
+if (NOT IS_EXCLUDED AND BUILD_TESTS)
+    message(STATUS "Building tests for ${PROJECT_NAME}")
+    enable_testing()
+    add_subdirectory(test)
+endif()

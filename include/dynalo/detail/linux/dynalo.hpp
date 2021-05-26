@@ -64,7 +64,9 @@ FunctionSignature* get_function(native::handle lib_handle, const std::string& fu
         throw std::runtime_error(std::string("Failed to get [func_name:") + func_name + "]: " + last_error());
     }
 
-    return reinterpret_cast<FunctionSignature*>(func_ptr);
+// TODO: disable optimization for these lines since it is UB
+    void **intermediate_ptr = reinterpret_cast<void**>(&func_ptr);
+    return reinterpret_cast<FunctionSignature*>(*intermediate_ptr);
 }
 
 }}
