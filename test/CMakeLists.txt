@@ -14,5 +14,5 @@ add_library(shared SHARED shared.cpp)
 add_dependencies(loader shared)
 
 add_test(NAME loader COMMAND
-    "$<TARGET_FILE:loader>" "$<TARGET_FILE_DIR:shared>" "shared"
+    "$<TARGET_FILE:loader>" "$<TARGET_FILE:shared>"
 )

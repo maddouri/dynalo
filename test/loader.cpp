@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     }
     try
     {
-        dynalo::library lib(std::string(argv[1]) + "/" + dynalo::to_native_name("shared"));
+        dynalo::library lib(argv[1]);
 
         auto add_integers  = lib.get_function<int32_t(const int32_t, const int32_t)>("add_integers");
         auto print_message = lib.get_function<void(const char*)>("print_message");
