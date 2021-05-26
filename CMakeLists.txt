@@ -9,6 +9,12 @@ project(dynalo)
 option(CLEAN_BUILD "Clean build with no warnings allowed" OFF)
 message(STATUS "Clean build, warnings are not allowed: " ${CLEAN_BUILD})
 
+include(CMakeDependentOption)
+
+# do not build tests if included as a subdirectory
+cmake_dependent_option(BUILD_TESTS "Build Tests" ON
+        "NOT hasParent" OFF)
+
 if (${CLEAN_BUILD})
     if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         add_compile_options(/W4 /WX)
@@ -72,5 +78,7 @@ install(
     DESTINATION "${CONFIG_PACKAGE_INSTALL_LOCATION}"
 )
 
-enable_testing()
-add_subdirectory(test)
+if (BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
