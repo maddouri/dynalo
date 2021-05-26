@@ -72,4 +72,5 @@ install(
     DESTINATION "${CONFIG_PACKAGE_INSTALL_LOCATION}"
 )
 
+enable_testing()
 add_subdirectory(test)

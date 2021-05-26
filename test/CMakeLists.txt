@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.0.0)
+#cmake_minimum_required(VERSION 3.0.0)
 
-project(dynalo-test)
+# project(dynalo-test)
 
 set(CMAKE_CXX_STANDARD          11 )
 set(CMAKE_CXX_STANDARD_REQUIRED ON )
@@ -13,7 +13,6 @@ add_library(shared SHARED shared.cpp)
 
 add_dependencies(loader shared)
 
-enable_testing()
-add_test(NAME all_tests COMMAND
+add_test(NAME loader COMMAND
     "$<TARGET_FILE:loader>" "$<TARGET_FILE_DIR:shared>" "shared"
 )
