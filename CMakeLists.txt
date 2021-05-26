@@ -10,9 +10,9 @@ option(CLEAN_BUILD "Clean build with no warnings allowed" OFF)
 message(STATUS "Clean build, warnings are not allowed: " ${CLEAN_BUILD})
 
 if (${CLEAN_BUILD})
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         add_compile_options(/W4 /WX)
-    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         add_compile_options(-Wall -Wextra -pedantic -Werror)
     else()
         # TODO: implement flags for other compilers
